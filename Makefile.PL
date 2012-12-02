@@ -170,6 +170,7 @@ sub dir_choice
 ################################################################################
 sub make_test_conf
 {
+return;
     my $test_conf = './t/test.conf';
     my ($dsn, $user, $pass, $path, $db, $host);
 
