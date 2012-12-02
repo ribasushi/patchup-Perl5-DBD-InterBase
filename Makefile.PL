@@ -469,8 +469,14 @@ elsif ($os eq 'solaris')
 }
 elsif (($os eq 'linux') || ($os eq 'freebsd'))
 {
+    chomp( my $deb_multiarch = `dpkg-architecture -qDEB_HOST_MULTIARCH` )
+      if $os eq 'linux';
+
     my $ib_lib = dir_choice("InterBase/Firebird lib directory",
-    [qw(/usr/firebird/lib /opt/firebird/lib /usr/lib /usr/local/lib)],
+    [
+      qw(/usr/firebird/lib /opt/firebird/lib /usr/lib /usr/local/lib),
+      $deb_multiarch ? (map { "$_/$deb_multiarch" } qw|/lib /usr/lib| ) : (),
+    ],
     [qw(libgds.a libgds.so libfbclient.so libfbembed.so)]);
     my $lib;
 
