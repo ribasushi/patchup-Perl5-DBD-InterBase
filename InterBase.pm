@@ -17,7 +17,7 @@ require Exporter;
 require DynaLoader;
 
 @ISA = qw(Exporter DynaLoader);
-$VERSION = '0.48';
+$VERSION = '0.48_514';
 
 bootstrap DBD::InterBase $VERSION;
 
